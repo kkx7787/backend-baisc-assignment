@@ -1,7 +1,6 @@
-package problem3;
+package problem3.account;
 
-// 마이너스 통장 계좌 클래스
-class OverdraftAccount extends BankAccount {
+public class OverdraftAccount extends Account {
     public OverdraftAccount(String accountNumber, String owner) {
         super(accountNumber, "마이너스", owner, 0);
     }
@@ -12,7 +11,7 @@ class OverdraftAccount extends BankAccount {
     }
 
     @Override
-    public void transfer(BankAccount targetAccount, double amount) {
+    public void transfer(Transferable targetAccount, double amount) {
         balance -= amount;
         targetAccount.deposit(amount);
     }

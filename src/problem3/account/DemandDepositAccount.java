@@ -1,7 +1,8 @@
-package problem3;
+package problem3.account;
 
-// 자유입출금 계좌 클래스
-class DemandDepositAccount extends BankAccount {
+import problem3.exception.InsufficientBalanceException;
+
+public class DemandDepositAccount extends Account {
     public DemandDepositAccount(String accountNumber, String owner) {
         super(accountNumber, "자유입출금", owner, 0);
     }
@@ -15,7 +16,7 @@ class DemandDepositAccount extends BankAccount {
     }
 
     @Override
-    public void transfer(BankAccount targetAccount, double amount) throws InsufficientBalanceException {
+    public void transfer(Transferable targetAccount, double amount) throws InsufficientBalanceException {
         if (balance < amount) {
             throw new InsufficientBalanceException("잔액이 부족하여 이체할 수 없습니다.");
         }

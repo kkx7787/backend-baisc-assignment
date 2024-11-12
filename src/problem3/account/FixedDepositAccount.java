@@ -1,7 +1,8 @@
-package problem3;
+package problem3.account;
 
-public class FixedDepositAccount extends BankAccount {
+import problem3.exception.UnauthorizedTransferException;
 
+public class FixedDepositAccount extends Account {
     public FixedDepositAccount(String accountNumber, String owner, double balance) {
         super(accountNumber, "정기예금", owner, balance);
     }
@@ -12,11 +13,11 @@ public class FixedDepositAccount extends BankAccount {
     }
 
     @Override
-    public void transfer(BankAccount targetAccount, double amount) throws UnauthorizedTransferException {
+    public void transfer(Transferable targetAccount, double amount) throws UnauthorizedTransferException {
         throw new UnauthorizedTransferException("정기예금 계좌에서는 이체가 불가능합니다.");
     }
 
-    public void processFinalAmount(BankAccount targetAccount, double interestRate) {
+    public void processFinalAmount(Account targetAccount, double interestRate) {
         double totalAmount = this.balance + this.balance * interestRate;
         targetAccount.deposit(totalAmount);
         this.balance = 0;
