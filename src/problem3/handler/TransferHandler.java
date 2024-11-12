@@ -69,10 +69,7 @@ public class TransferHandler {
             System.out.print(transferPrompt);
             double transferAmount = Double.parseDouble(scanner.nextLine());
 
-            if (transferAmount == 0) {
-                System.out.println("이체가 취소되었습니다.");
-                break;
-            }
+            if (transferAmount == 0) break;
 
             try {
                 fromAccount.transfer(toAccount, transferAmount);
@@ -113,19 +110,15 @@ public class TransferHandler {
                 System.out.print("어디로 보낼까요? (1: 자유입출금, 3: 마이너스): ");
                 int targetAccount = scanner.nextInt();
                 scanner.nextLine();
-
                 if (targetAccount == 1) {
                     fixedAccount.processFinalAmount(demandAccount, interestRate);
                     return true;
                 } else if (targetAccount == 3) {
                     fixedAccount.processFinalAmount(overdraftAccount, interestRate);
                     return true;
-                } else {
-                    System.out.println("올바른 계좌를 선택해주세요.");
-                }
-            } else {
-                System.out.println("올바른 선택을 해주세요.");
-            }
+                } else System.out.println("올바른 계좌를 선택해주세요.");
+            } else System.out.println("올바른 선택을 해주세요.");
+
         }
     }
 

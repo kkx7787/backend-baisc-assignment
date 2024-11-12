@@ -12,8 +12,8 @@ public class AccountHandler {
             switch (work) {
                 case "+" -> TransferHandler.deposit(scanner, demandAccount);
                 case "-" -> TransferHandler.withdraw(scanner, demandAccount);
-                case "T" -> TransferHandler.transfer(scanner, demandAccount, fixedAccount, overdraftAccount);
-                case "I" -> demandAccount.showAccount();
+                case "T", "t" -> TransferHandler.transfer(scanner, demandAccount, fixedAccount, overdraftAccount);
+                case "I", "i" -> demandAccount.showAccount();
                 default -> System.out.println("올바른 작업을 입력하세요.");
             }
         } while (!work.equalsIgnoreCase("0"));
@@ -32,18 +32,14 @@ public class AccountHandler {
                     while (true) {
                         int month = TransferHandler.getDepositMonths(scanner);
                         if (month == 0) break;
-
                         double interestRate = TransferHandler.getInterestRate(month);
                         boolean isMatured = TransferHandler.processMaturity(scanner, fixedAccount, demandAccount, overdraftAccount, month, interestRate);
-
-                        if (isMatured) {
-                            return true;
-                        }
+                        if (isMatured) return true;
                     }
                 }
                 case "-" -> System.out.println("출금할 수 없는 통장입니다.");
-                case "T" -> System.out.println("이체할 수 없는 통장입니다.");
-                case "I" -> {
+                case "T", "t" -> System.out.println("이체할 수 없는 통장입니다.");
+                case "I", "i" -> {
                     fixedAccount.showAccount();
                     System.out.println("* 예치 개월에 따른 적용 금리");
                     System.out.println("1개월 이상\t 3.0%");
@@ -72,8 +68,8 @@ public class AccountHandler {
             switch (work) {
                 case "+" -> TransferHandler.deposit(scanner, overdraftAccount);
                 case "-" -> TransferHandler.withdraw(scanner, overdraftAccount);
-                case "T" -> TransferHandler.transfer(scanner, overdraftAccount, demandAccount, fixedAccount);
-                case "I" -> overdraftAccount.showAccount();
+                case "T", "t" -> TransferHandler.transfer(scanner, overdraftAccount, demandAccount, fixedAccount);
+                case "I", "i" -> overdraftAccount.showAccount();
                 default -> System.out.println("올바른 업무 번호를 입력하세요.");
             }
         } while (!work.equalsIgnoreCase("0"));

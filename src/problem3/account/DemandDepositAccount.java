@@ -8,17 +8,13 @@ public class DemandDepositAccount extends Account {
 
     @Override
     public void withdraw(double amount) throws InsufficientBalanceException {
-        if (balance < amount) {
-            throw new InsufficientBalanceException("잔액이 부족합니다.");
-        }
+        if (balance < amount) throw new InsufficientBalanceException("잔액이 부족합니다.");
         balance -= amount;
     }
 
     @Override
     public void transfer(Transferable targetAccount, double amount) throws InsufficientBalanceException {
-        if (balance < amount) {
-            throw new InsufficientBalanceException("잔액이 부족하여 이체할 수 없습니다.");
-        }
+        if (balance < amount) throw new InsufficientBalanceException("잔액이 부족하여 이체할 수 없습니다.");
         balance -= amount;
         targetAccount.deposit(amount);
     }

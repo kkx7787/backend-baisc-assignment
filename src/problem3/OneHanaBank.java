@@ -15,9 +15,8 @@ public class OneHanaBank {
 
         while (true) {
             System.out.print(">> 통장을 선택하세요(1: 자유입출금, ");
-            if (!isFixedAccountExpired) {
-                System.out.print("2: 정기예금, ");
-            }
+            if (!isFixedAccountExpired) System.out.print("2: 정기예금, ");
+
             System.out.print("3: 마이너스) ");
             account = scanner.nextLine().trim();
 
@@ -34,9 +33,8 @@ public class OneHanaBank {
                         AccountHandler.handleDemandDepositAccount(scanner, demandAccount, fixedAccount, overdraftAccount);
                     }
                     case 2 -> {
-                        if (isFixedAccountExpired) {
-                            System.out.println("정기예금 통장은 만기 처리되어 더 이상 선택할 수 없습니다.");
-                        } else {
+                        if (isFixedAccountExpired) System.out.println("정기예금 통장은 만기 처리되어 더 이상 선택할 수 없습니다.");
+                        else {
                             fixedAccount.showAccount();
                             isFixedAccountExpired = AccountHandler.handleFixedDepositAccount(scanner, demandAccount, fixedAccount, overdraftAccount);
                         }
