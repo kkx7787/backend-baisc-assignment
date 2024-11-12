@@ -1,8 +1,8 @@
 package company;
 
 public class TemporaryWorker extends Worker{
-    int payPerHour;
-    int workTime;
+    private int payPerHour;
+    private int workTime;
 
     public TemporaryWorker(String name, int payPerHour, int workTime) {
         super(name);

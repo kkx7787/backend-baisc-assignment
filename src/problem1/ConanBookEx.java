@@ -30,10 +30,6 @@ class ConanBookStore implements BookStore {
         this.quantity = 1;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void increaseQuantity() {
         this.quantity += 1;
     }
@@ -144,7 +140,6 @@ public class ConanBookEx {
             return;
         }
 
-
         for (ConanBookStore book : ConanBooksList) {
             book.displayDetails();
         }
@@ -161,20 +156,18 @@ public class ConanBookEx {
             }
         }
 
-        // 선택된 도서가 없는 경우
         if (selectedBook == null) {
             System.out.println("유효하지 않은 ID입니다.");
             return;
         }
 
-        System.out.println("장바구니에 추가하겠습니까? Y | N");
-        String choice = scanner.nextLine();
+        System.out.print("장바구니에 추가하겠습니까? (Y | N) ");
+        String choice = scanner.nextLine().trim();
 
-        if (choice.equalsIgnoreCase("N")) {
+        if (!choice.equalsIgnoreCase("Y")) {
             return;
         }
 
-        // 중복 도서 처리
         boolean foundInCart = false;
         for (int i = 0; i < cartItemCount; i++) {
             if (ConanBooksShoppingCart[i].getSerialNumber().equals(selectedBook.getSerialNumber())) {
@@ -252,9 +245,17 @@ public class ConanBookEx {
         System.out.println("[배송 받을 고객 정보]");
         displayUser(userName, phoneNumber);
         System.out.printf("배송지 : %s | 발송일 : %s\n", receivedPlace, formatedNow);
-        for (int i = 0; i < cartItemCount; i++) {
-            ConanBooksShoppingCart[i].displayShoppingCart();
-            total += ConanBooksShoppingCart[i].getTotalPrice();
+        System.out.println("\n[장바구니 상품 목록]");
+        if (cartItemCount == 0) {
+            System.out.println("장바구니가 비어 있습니다.");
+        } else {
+            System.out.println("-----------------------------");
+            System.out.println("도서ID\t|\t수량\t|\t합계");
+            for (int i = 0; i < cartItemCount; i++) {
+                ConanBooksShoppingCart[i].displayShoppingCart();
+                total += ConanBooksShoppingCart[i].getTotalPrice();
+            }
+            System.out.println("-----------------------------");
         }
         System.out.printf("총액: %d원\n", total);
     }

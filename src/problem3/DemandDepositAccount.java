@@ -25,9 +25,8 @@ class DemandDepositAccount extends BankAccount {
 
     @Override
     public void showAccount() {
-        String balanceStr = String.format("%,d", Math.round(balance)); // 소수점 없이 반올림하여 정수로 표시
-        System.out.printf("%s 통장 (계좌번호: %s, 잔액: %s원, 예금주: %s)\n",
+        String balanceStr = String.format("%,d", Math.round(balance));
+        System.out.printf("%s 통장 (계좌번호: %s, 잔액: %s원, 예금주:%s)\n",
                 super.accountName, accountNumber, balanceStr, super.owner);
     }
-
 }
