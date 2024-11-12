@@ -3,63 +3,13 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
-interface BookStore {
-    void displayDetails();
-    void displayShoppingCart();
-}
-
-class ConanBookStore implements BookStore {
-    private String serialNumber;
-    private String title;
-    private int price;
-    private String author;
-    private String description;
-    private String genre;
-    private String publishDate;
-    private int quantity;
-
-    ConanBookStore(String serialNumber, String title, int price, String author, String description, String genre, String publishDate) {
-        this.serialNumber = serialNumber;
-        this.title = title;
-        this.price = price;
-        this.author = author;
-        this.description = description;
-        this.genre = genre;
-        this.publishDate = publishDate;
-        this.quantity = 1;
-    }
-
-    public void increaseQuantity() {
-        this.quantity += 1;
-    }
-
-    public int getTotalPrice() {
-        return price * quantity;
-    }
-
-    @Override
-    public void displayDetails() {
-        System.out.printf("%s | %s | %d원 | %s | %s | %s | %s%n",
-                serialNumber, title, price, author, description, genre, publishDate);
-    }
-
-    public void displayShoppingCart() {
-        System.out.printf("%s\t|\t%d\t|\t%d\n", serialNumber, quantity, price * quantity);
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-}
-
 public class ConanBookEx {
-    private static ConanBookStore[] ConanBooksList = {
+    private static final ConanBookStore[] ConanBooksList = {
             new ConanBookStore("ISBN1234", "셜록홈즈", 20000, "코난 도일", "고전 추리 소설", "추리소설", "2018/10/08"),
             new ConanBookStore("ISBN2345", "도리안 그레이의 초상", 16000, "오스카 와일드", "예술을 위한 예술!", "고전소설", "2022/01/22"),
             new ConanBookStore("ISBN3456", "쥐덫", 27000, "애거서 크리스티", "갇힌 여관에서 벌어지는 추리극", "추리 소설", "2019/06/10")
     };
-    private static ConanBookStore[] ConanBooksShoppingCart = new ConanBookStore[10];
+    private static final ConanBookStore[] ConanBooksShoppingCart = new ConanBookStore[10];
     private static int cartItemCount = 0;
 
     public static void main(String[] args) {

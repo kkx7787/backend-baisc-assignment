@@ -1,4 +1,4 @@
-package company;
+package problem2.company;
 
 public class SalesWorker extends PermanentWorker {
     private int salesAmount;

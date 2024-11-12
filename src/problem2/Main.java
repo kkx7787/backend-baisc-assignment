@@ -1,4 +1,9 @@
-package company;
+package problem2;
+
+import problem2.company.ManagerService;
+import problem2.company.PermanentWorker;
+import problem2.company.SalesWorker;
+import problem2.company.TemporaryWorker;
 
 public class Main {
     public static void main(String[] args) {

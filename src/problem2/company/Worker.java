@@ -1,4 +1,4 @@
-package company;
+package problem2.company;
 
 public abstract class Worker implements Employee {
     protected String name;

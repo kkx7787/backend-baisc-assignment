@@ -1,4 +1,4 @@
-package company;
+package problem2.company;
 
 public class TemporaryWorker extends Worker{
     private int payPerHour;

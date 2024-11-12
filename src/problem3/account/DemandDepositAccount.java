@@ -1,5 +1,4 @@
 package problem3.account;
-
 import problem3.exception.InsufficientBalanceException;
 
 public class DemandDepositAccount extends Account {
