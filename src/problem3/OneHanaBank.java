@@ -1,7 +1,5 @@
 package problem3;
-import problem3.account.DemandDepositAccount;
-import problem3.account.FixedDepositAccount;
-import problem3.account.OverdraftAccount;
+import problem3.account.*;
 import problem3.handler.AccountHandler;
 import java.util.Scanner;
 

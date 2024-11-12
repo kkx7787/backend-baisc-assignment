@@ -1,10 +1,6 @@
 package problem3.handler;
-import problem3.account.Account;
-import problem3.account.DemandDepositAccount;
-import problem3.account.FixedDepositAccount;
-import problem3.account.OverdraftAccount;
-import problem3.exception.InsufficientBalanceException;
-import problem3.exception.UnauthorizedTransferException;
+import problem3.account.*;
+import problem3.exception.*;
 import java.util.Scanner;
 
 public class TransferHandler {

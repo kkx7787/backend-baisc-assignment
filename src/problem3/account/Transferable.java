@@ -1,6 +1,5 @@
 package problem3.account;
-import problem3.exception.InsufficientBalanceException;
-import problem3.exception.UnauthorizedTransferException;
+import problem3.exception.*;
 
 public interface Transferable {
     double getBalance();

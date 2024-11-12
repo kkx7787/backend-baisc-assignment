@@ -18,7 +18,7 @@ public class OverdraftAccount extends Account {
 
     @Override
     public void showAccount() {
-        String balanceStr = String.format("%,d", Math.round(balance)); // 소수점 없이 반올림하여 정수로 표시
+        String balanceStr = String.format("%,d", Math.round(balance));
         System.out.printf("%s 통장 - 잔액 : %s원\n", super.accountName, balanceStr);
     }
 }
