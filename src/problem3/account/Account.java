@@ -5,7 +5,7 @@ import problem3.exception.UnauthorizedTransferException;
 
 public abstract class Account implements Transferable {
     protected String accountNumber;
-    public String accountName;
+    protected String accountName;
     protected String owner;
     protected double balance;
 
@@ -18,6 +18,10 @@ public abstract class Account implements Transferable {
 
     public double getBalance() {
         return balance;
+    }
+
+    public String getAccountName() {
+        return accountName;
     }
 
     public void deposit(double amount) {

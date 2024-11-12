@@ -16,7 +16,7 @@ public class TransferHandler {
         if (depositAmount == 0) return;
         account.deposit(depositAmount);
         String depositAmountStr = String.format("%,d", Math.round(depositAmount));
-        System.out.printf("%s 통장에 %s원이 입금되었습니다!\n", account.accountName, depositAmountStr);
+        System.out.printf("%s 통장에 %s원이 입금되었습니다!\n", account.getAccountName(), depositAmountStr);
     }
 
     public static void withdraw(Scanner scanner, Account account) {
@@ -28,8 +28,8 @@ public class TransferHandler {
                 account.withdraw(withdrawAmount);
                 String withdrawAmountStr = String.format("%,d", Math.round(withdrawAmount));
                 String balanceAmountStr = String.format("%,d", Math.round(account.getBalance()));
-                System.out.printf("%s 통장에서 %s원이 출금되었습니다.\n", account.accountName, withdrawAmountStr);
-                System.out.printf("%s 통장의 잔액은 %s원입니다.\n", account.accountName, balanceAmountStr);
+                System.out.printf("%s 통장에서 %s원이 출금되었습니다.\n", account.getAccountName(), withdrawAmountStr);
+                System.out.printf("%s 통장의 잔액은 %s원입니다.\n", account.getAccountName(), balanceAmountStr);
                 break;
             } catch (InsufficientBalanceException | UnauthorizedTransferException e) {
                 String balanceStr = String.format("%,d", Math.round(account.getBalance()));
@@ -42,7 +42,7 @@ public class TransferHandler {
         Account toAccount;
         String transferPrompt;
 
-        int fromAccountType = fromAccount.accountName.equalsIgnoreCase("자유입출금") ? 1 : 3;
+        int fromAccountType = fromAccount.getAccountName().equalsIgnoreCase("자유입출금") ? 1 : 3;
         if (fromAccountType == 1) {
             System.out.print("어디로 보낼까요? (2: 정기예금, 3: 마이너스) ");
             int toAccountType = Integer.parseInt(scanner.nextLine());
@@ -84,8 +84,8 @@ public class TransferHandler {
                 fromAccount.transfer(toAccount, transferAmount);
                 String transferAmountStr = String.format("%,d", Math.round(transferAmount));
                 String balanceStr = String.format("%,d", Math.round(fromAccount.getBalance()));
-                System.out.printf("%s 통장에 %s원이 입금되었습니다.\n", toAccount.accountName, transferAmountStr);
-                System.out.printf("%s 통장의 잔액은 %s원 입니다.\n", fromAccount.accountName, balanceStr);
+                System.out.printf("%s 통장에 %s원이 입금되었습니다.\n", toAccount.getAccountName(), transferAmountStr);
+                System.out.printf("%s 통장의 잔액은 %s원 입니다.\n", fromAccount.getAccountName(), balanceStr);
                 break;
             } catch (InsufficientBalanceException e) {
                 String balanceStr = String.format("%,d", Math.round(fromAccount.getBalance()));
